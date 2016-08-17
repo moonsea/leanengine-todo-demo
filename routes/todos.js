@@ -101,7 +101,7 @@ router.post('/:id/done', function(req, res, next) {
 router.post('/:id/undone', function(req, res, next) {
   var id = req.params.id;
   var todo = AV.Object.createWithoutData('Todo', id);
-  todo.save({status: 1}, {sessionToken: req.sessionToken}).then(function() {
+  todo.save({status: 0}, {sessionToken: req.sessionToken}).then(function() {
     res.redirect('/todos?status=1');
   }, function(err) {
     res.redirect('/todos?status=1&errMsg=' + JSON.stringify(err));
